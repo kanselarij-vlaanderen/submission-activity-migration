@@ -1,0 +1,20 @@
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+SELECT ?meeting ?submitter ?piece
+WHERE {
+    GRAPH # GRAPH_PLACEHOLDER {
+        OPTIONAL {
+            # SUBCASE_PLACEHOLDER ext:isAangevraagdVoor ?meeting .
+            ?meeting a besluit:Vergaderactiviteit .
+        }
+        OPTIONAL {
+            # SUBCASE_PLACEHOLDER ext:indiener ?submitter.
+            ?submitter a mandaat:Mandataris .
+        }
+        OPTIONAL {
+            # SUBCASE_PLACEHOLDER ext:bevatDocumentversie ?piece .
+            ?piece a dossier:Stuk .
+        }
+    }
+}

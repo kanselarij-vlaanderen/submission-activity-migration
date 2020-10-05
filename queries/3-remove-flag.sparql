@@ -1,0 +1,16 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX besluitvorming: <http://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX eli: <http://data.europa.eu/eli/ontology#>
+
+DELETE {
+    GRAPH # GRAPH_PLACEHOLDER {
+        ?subcase ext:tempFlag ?f .
+    }
+}
+WHERE {
+    GRAPH # GRAPH_PLACEHOLDER {
+        ?subcase a dossier:Procedurestap.
+        ?subcase ext:tempFlag ?f .
+    }
+}

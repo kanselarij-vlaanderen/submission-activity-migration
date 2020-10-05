@@ -1,0 +1,17 @@
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+
+SELECT ?subcase WHERE {
+    GRAPH # GRAPH_PLACEHOLDER {
+        ?subcase a dossier:Procedurestap.
+        FILTER NOT EXISTS {
+            ?subcase ext:indieningVindtPlaatsTijdens ?subact .
+            ?subact a ext:Indieningsactiviteit .
+        }
+        FILTER NOT EXISTS {
+            ?subcase ext:tempFlag ?f .
+        }
+    }
+}
+LIMIT # LIMIT_PLACEHOLDER
